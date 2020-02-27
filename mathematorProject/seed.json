@@ -1,0 +1,28 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$3okBLjM5Ttq1$y95yNH+1mx2ZNn3dJn1wAAMCOjiGxIZ8cO3c2uHJB2U=",
+        "last_login": "2020-02-26T15:25:31.127Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@admin.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2020-02-26T15:25:12.094Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "52lszfewuu90vrtpsdaqtl5s8uops0xc",
+    "fields": {
+        "session_data": "MTg1NjIyZTg0MjkyZTZjZGE5OGY2YzZjMDkzM2NjZmY0MWNiMjU0MTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJhNmRiM2UxODBkNTUwODEzNDljZDVjMzcyM2M2NmY1Y2VkOTM1YWFkIn0=",
+        "expire_date": "2020-03-11T15:25:31.139Z"
+    }
+}
+]
