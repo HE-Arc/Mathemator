@@ -38,5 +38,35 @@
       "branches":"branche2",
       "year":"2H"
     }
+  },
+  {
+    "model": "mathematorApp.ExerciseRequirement",
+    "pk": 1,
+    "fields": {
+    "idExercise":1,
+    "idExerciseRequirement":2
+    }
+  },
+  {
+    "model": "mathematorApp.Exercise",
+    "pk": 2,
+    "fields": {
+      "name":"ex2",
+      "objective":"ob2",
+      "theme":"theme2",
+      "branches":"branche2",
+      "year":"2H"
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseDone",
+    "pk": 1,
+    "fields": {
+    "idStudent":1,
+    "idExercise":1,
+    "nbWrong":3,
+    "nbRight":4
+    }
   }
+
 ]
