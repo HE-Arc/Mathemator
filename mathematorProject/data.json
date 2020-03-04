@@ -70,13 +70,8 @@
   },
   {
     "model": "mathematorApp.ExerciseSimpleOperation",
-    "pk": 3,
+    "pk": 2,
     "fields": {
-      "name" : "exso1",
-      "objective" : "obso1",
-      "theme" : "themeso1",
-      "branches" : "brancheso1",
-      "year" : "2H",
       "rangeMin" : 0.0,
       "rangeMax" : 10.0,
       "rangeStep" : 1.0,
