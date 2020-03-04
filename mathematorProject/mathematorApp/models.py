@@ -7,7 +7,7 @@ class Student(models.Model):
     lastName = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)
     isTeacher = models.BooleanField()
-    relationExerciseDone =  models.ManyToManyField('Exercise', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
+    relationExerciseDone = models.ManyToManyField('Exercise', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
 
 
 class Exercise(models.Model):
@@ -18,6 +18,28 @@ class Exercise(models.Model):
     year = models.CharField(max_length=50)
     relationExerciseRequirement = models.ManyToManyField('self', through='ExerciseRequirement', symmetrical=False, related_name='related_to_exerciserequirement')
     relationExerciseDone =  models.ManyToManyField('Student', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
+    donnee = models.CharField(max_length=50,default ="")
+
+class ExerciseSimpleOperation(Exercise):
+    rangeMin = models.DecimalField(max_digits=5, decimal_places=2)
+    rangeMax = models.DecimalField(max_digits=5, decimal_places=2)
+    rangeStep = models.DecimalField(max_digits=5, decimal_places=2)
+    nbOperation = models.IntegerField()
+    ADDITION='+'
+    SOUSTRACTION='-'
+    DIVISION='/'
+    MULTIPLICATION='*'
+    OPERATORS_CHOICES = [
+        (ADDITION, 'addition'),
+        (SOUSTRACTION, 'soustraction'),
+        (DIVISION, 'division'),
+        (MULTIPLICATION, 'multiplication'),
+    ]
+    operators = models.CharField(
+        max_length=1,
+        choices=OPERATORS_CHOICES,
+        default=ADDITION,
+    )
 
 class ExerciseRequirement(models.Model):
     idExercise = models.ForeignKey(Exercise, related_name='fromExercise', on_delete=models.CASCADE)
