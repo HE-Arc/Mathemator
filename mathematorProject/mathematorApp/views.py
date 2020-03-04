@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, "index.html", {})
 
-
 def login(request):
     print("hello")
     if request.user.is_authenticated:
