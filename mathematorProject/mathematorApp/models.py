@@ -1,11 +1,9 @@
 from django.db import models
 
+from django.contrib.auth.models import User
 # Create your models here.
 
-class Student(models.Model):
-    firstName = models.CharField(max_length=50)
-    lastName = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100)
+class Student(User):
     isTeacher = models.BooleanField()
     relationExerciseDone = models.ManyToManyField('Exercise', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
 
