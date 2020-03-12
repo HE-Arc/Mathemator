@@ -18,7 +18,7 @@ class Exercise(models.Model):
     year = models.CharField(max_length=50)
     relationExerciseRequirement = models.ManyToManyField('self', through='ExerciseRequirement', symmetrical=False, related_name='related_to_exerciserequirement')
     relationExerciseDone =  models.ManyToManyField('Student', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
-    donnee = models.CharField(max_length=50,default ="")
+    donnee = models.CharField(max_length=50, default ="")
 
 class ExerciseSimpleOperation(Exercise):
     rangeMin = models.DecimalField(max_digits=5, decimal_places=2)
@@ -36,10 +36,13 @@ class ExerciseSimpleOperation(Exercise):
         (MULTIPLICATION, 'multiplication'),
     ]
     operators = models.CharField(
-        max_length=1,
+        max_length=4,
         choices=OPERATORS_CHOICES,
         default=ADDITION,
     )
+
+class ExerciseFixDonneeResultat(Exercise):
+    result = models.CharField(max_length=50, default ="")
 
 class ExerciseRequirement(models.Model):
     idExercise = models.ForeignKey(Exercise, related_name='fromExercise', on_delete=models.CASCADE)

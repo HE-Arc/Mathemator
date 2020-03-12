@@ -49,7 +49,7 @@
   },
   {
     "model": "mathematorApp.Exercise",
-    "pk": 2,
+    "pk": 3,
     "fields": {
       "name":"ex2",
       "objective":"ob2",
@@ -77,8 +77,35 @@
       "rangeStep" : 1.0,
       "operators":"+",
       "nbOperation" : 1
-
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseFixDonneeResultat",
+    "pk": 3,
+    "fields": {
+      "result" : "ceciestunresultat"
+    }
+  },
+  {
+    "model": "mathematorApp.Exercise",
+    "pk": 4,
+    "fields": {
+      "name":"ex4",
+      "objective":"ob4",
+      "theme":"theme4",
+      "branches":"branche4",
+      "year":"4H"
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseSimpleOperation",
+    "pk": 4,
+    "fields": {
+      "rangeMin" : 0.0,
+      "rangeMax" : 10.0,
+      "rangeStep" : 1.0,
+      "operators":"+-*/",
+      "nbOperation" : 1
     }
   }
-
 ]

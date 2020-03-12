@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{exercise.name}}</h1>
+<p>{{exercise.donnee}}</p>
+<p>{{exercise.rangeMax}}</p>
+<p>{{exercise.operators}}</p>
+
+
+{% for r in listRandomOperator %}
+      <p>{{r}}</p>
+{% endfor %}
+{% endblock %}
