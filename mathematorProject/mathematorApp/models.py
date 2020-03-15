@@ -8,7 +8,7 @@ from django.dispatch import receiver
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     group = models.CharField(max_length=50)
-    isTeacher = models.BooleanField()
+    isTeacher = models.BooleanField(default=False)
     relationExerciseDone = models.ManyToManyField('Exercise', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
 
 @receiver(post_save, sender=User)

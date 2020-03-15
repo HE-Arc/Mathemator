@@ -1,5 +1,5 @@
 [
-  {
+{
     "model": "auth.user",
     "pk": 1,
     "fields": {
@@ -70,96 +70,5 @@
         "groups": [],
         "user_permissions": []
     }
-},
-  {
-    "model": "mathematorApp.Student",
-    "pk": 2,
-    "fields": {
-      "user":2,
-      "group":"6e",
-      "isTeacher":false
-    }
-  },
-  {
-    "model": "mathematorApp.Student",
-    "pk": 3,
-    "fields": {
-      "user":3,
-      "group":"7e",
-      "isTeacher":false
-    }
-  },
-  {
-    "model": "mathematorApp.Student",
-    "pk": 4,
-    "fields": {
-      "user":4,
-      "group":"qwe",
-      "isTeacher":true
-    }
-  },
-  {
-    "model": "mathematorApp.Exercise",
-    "pk": 1,
-    "fields": {
-      "name":"ex1",
-      "objective":"ob1",
-      "theme":"theme1",
-      "branches":"branche1",
-      "year":"1H"
-    }
-  },
-  {
-    "model": "mathematorApp.Exercise",
-    "pk": 2,
-    "fields": {
-      "name":"ex2",
-      "objective":"ob2",
-      "theme":"theme2",
-      "branches":"branche2",
-      "year":"2H"
-    }
-  },
-  {
-    "model": "mathematorApp.ExerciseRequirement",
-    "pk": 1,
-    "fields": {
-    "idExercise":1,
-    "idExerciseRequirement":2
-    }
-  },
-  {
-    "model": "mathematorApp.Exercise",
-    "pk": 2,
-    "fields": {
-      "name":"ex2",
-      "objective":"ob2",
-      "theme":"theme2",
-      "branches":"branche2",
-      "year":"2H"
-    }
-  },
-  {
-    "model": "mathematorApp.ExerciseDone",
-    "pk": 1,
-    "fields": {
-    "idStudent":1,
-    "idExercise":1,
-    "nbWrong":3,
-    "nbRight":4
-    }
-  },
-  {
-    "model": "mathematorApp.ExerciseSimpleOperation",
-    "pk": 2,
-    "fields": {
-      "rangeMin" : 0.0,
-      "rangeMax" : 10.0,
-      "rangeStep" : 1.0,
-      "operators":"+",
-      "nbOperation" : 1
-
-    }
-  }
-
+}
 ]
