@@ -94,7 +94,7 @@
     "pk": 4,
     "fields": {
       "user":4,
-      "group":"qwe",
+      "group":"classDeQwe",
       "isTeacher":true
     }
   },

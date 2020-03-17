@@ -10,7 +10,7 @@ class Student(models.Model):
     group = models.CharField(max_length=50)
     isTeacher = models.BooleanField(default=False)
     relationExerciseDone = models.ManyToManyField('Exercise', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
-
+    
 @receiver(post_save, sender=User)
 def create_user_student(sender, instance, created, **kwargs):
     if created:
