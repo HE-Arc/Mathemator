@@ -3,11 +3,30 @@
 {% block content %}
 <h1>{{exercise.name}}</h1>
 <p>{{exercise.donnee}}</p>
-<p>{{exercise.rangeMax}}</p>
 <p>{{exercise.operators}}</p>
-
+<p>ewrw</p>
 
 {% for r in listRandomOperator %}
-      <p>{{r}}</p>
+      {{r}}
 {% endfor %}
+=
+<form method="post" action="{% url 'exercise'}">
+<input type="text" name="result" value="">
+<input type="submit" value="v">
+</form>
+
+{{exerciseRequirement}}
+{% for r in exerciseRequirement %}
+      {{r.name}}
+{% endfor %}
+<br>
+{{exerciseDone}}
+{% for r in exerciseDone %}
+      {{r.name}}
+{% endfor %}
+
+
+<p>test</p>
+
+
 {% endblock %}

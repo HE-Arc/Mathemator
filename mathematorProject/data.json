@@ -48,6 +48,14 @@
     }
   },
   {
+    "model": "mathematorApp.ExerciseRequirement",
+    "pk": 2,
+    "fields": {
+    "idExercise":4,
+    "idExerciseRequirement":2
+    }
+  },
+  {
     "model": "mathematorApp.Exercise",
     "pk": 3,
     "fields": {

@@ -7,7 +7,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', views.index, name='index'),
     path('profile', views.profile, name='profile'),
-    path('exercise/<int:exercise_id>/',views.exercise,name='exercise'),
-    path('exerciseSimpleOperation/<int:exercise_id>/',views.exerciseSimpleOperation,name='exercise'),
-    path('exerciseFixDonneeResultat/<int:exercise_id>/',views.exerciseFixDonneeResultat,name='exercise'),
+    path('exerciseSimpleOperation/<int:exercise_id>/',views.exerciseSimpleOperation,name='exerciseSimpleOperation'),
+    path('exerciseFixDonneeResultat/<int:exercise_id>/',views.exerciseFixDonneeResultat,name='exerciseFixDonneeResultat'),
 ]
