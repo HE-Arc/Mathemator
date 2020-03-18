@@ -14,6 +14,8 @@ def index(request):
 def profile(request):
     current_user = request.user
     student = get_object_or_404(Student, pk=current_user.id)
+
+    #exerciseDone=student.relationExerciseDone.all()
     return render(request, "profile.html", {'student':student})
 
 def login(request):
