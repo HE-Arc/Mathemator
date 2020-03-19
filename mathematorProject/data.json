@@ -137,6 +137,14 @@
     }
   },
   {
+    "model": "mathematorApp.ExerciseRequirement",
+    "pk": 3,
+    "fields": {
+    "idExercise":2,
+    "idExerciseRequirement":3
+    }
+  },
+  {
     "model": "mathematorApp.Exercise",
     "pk": 3,
     "fields": {
@@ -158,18 +166,18 @@
     }
   },
   {
-    "model": "mathematorApp.ExerciseSimpleOperation",
+    "model": "mathematorApp.ExerciseOperations",
     "pk": 2,
     "fields": {
       "rangeMin" : 0.0,
       "rangeMax" : 10.0,
       "rangeStep" : 1.0,
       "operators":"+",
-      "nbOperation" : 1
+      "nbOperators" : 1
     }
   },
   {
-    "model": "mathematorApp.ExerciseFixDonneeResultat",
+    "model": "mathematorApp.ExerciseFix",
     "pk": 3,
     "fields": {
       "result" : "ceciestunresultat"
@@ -187,14 +195,14 @@
     }
   },
   {
-    "model": "mathematorApp.ExerciseSimpleOperation",
+    "model": "mathematorApp.ExerciseOperations",
     "pk": 4,
     "fields": {
       "rangeMin" : 0.0,
       "rangeMax" : 10.0,
       "rangeStep" : 1.0,
       "operators":"+-*/",
-      "nbOperation" : 1
+      "nbOperators" : 1
     }
   }
 ]

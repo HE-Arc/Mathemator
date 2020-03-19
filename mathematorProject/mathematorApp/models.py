@@ -10,7 +10,7 @@ class Student(models.Model):
     group = models.CharField(max_length=50)
     isTeacher = models.BooleanField(default=False)
     relationExerciseDone = models.ManyToManyField('Exercise', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
-    
+
 @receiver(post_save, sender=User)
 def create_user_student(sender, instance, created, **kwargs):
     if created:
@@ -28,7 +28,7 @@ class Exercise(models.Model):
     year = models.CharField(max_length=50)
     relationExerciseRequirement = models.ManyToManyField('self', through='ExerciseRequirement', symmetrical=False, related_name='related_to_exerciserequirement')
     relationExerciseDone =  models.ManyToManyField('Student', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
-    donnee = models.CharField(max_length=50, default ="")
+    question = models.CharField(max_length=50, default ="")
 
 class ExerciseRequirement(models.Model):
     idExercise = models.ForeignKey(Exercise, related_name='fromExercise', on_delete=models.CASCADE)
@@ -40,11 +40,11 @@ class ExerciseDone(models.Model):
     nbWrong = models.IntegerField()
     nbRight = models.IntegerField()
 
-class ExerciseSimpleOperation(Exercise):
+class ExerciseOperations(Exercise):
         rangeMin = models.DecimalField(max_digits=5, decimal_places=2)
         rangeMax = models.DecimalField(max_digits=5, decimal_places=2)
         rangeStep = models.DecimalField(max_digits=5, decimal_places=2)
-        nbOperation = models.IntegerField()
+        nbOperators = models.IntegerField()
         ADDITION='+'
         SOUSTRACTION='-'
         DIVISION='/'
@@ -61,5 +61,5 @@ class ExerciseSimpleOperation(Exercise):
             default=ADDITION,
         )
 
-class ExerciseFixDonneeResultat(Exercise):
+class ExerciseFix(Exercise):
         result = models.CharField(max_length=50, default ="")
