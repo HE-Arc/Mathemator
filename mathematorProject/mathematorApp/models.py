@@ -1,14 +1,24 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
 
 class Student(models.Model):
-    firstName = models.CharField(max_length=50)
-    lastName = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100)
-    isTeacher = models.BooleanField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    group = models.CharField(max_length=50)
+    isTeacher = models.BooleanField(default=False)
     relationExerciseDone = models.ManyToManyField('Exercise', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
+    
+@receiver(post_save, sender=User)
+def create_user_student(sender, instance, created, **kwargs):
+    if created:
+        Student.objects.create(user=instance)
 
+@receiver(post_save, sender=User)
+def save_user_student(sender, instance, **kwargs):
+    instance.student.save()
 
 class Exercise(models.Model):
     name = models.CharField(max_length=50)

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Nom Prénom</h1>
+<h1>{{ user.get_username }}</h1>
 <div style="margin-left:5%;">
-  <h2>9H</h2>
+  <h2>{{student.group}}</h2>
   <div style="margin-left:5%;">
     <h3>Nom de l'exercice</h3>
     <table class="table" style="text-align:center; margin-top:2%;">
