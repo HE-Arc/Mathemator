@@ -6,7 +6,7 @@
 <p>liste des operateurs de l'exercice: {{exercise.operators}}</p>
 <p>range de l'exercice : {{exercise.rangeMin}} , {{exercise.rangeMax}}</p>
 
-{% for r in listRandomOperator %}
+{% for r in listRandom %}
       {{r}}
 {% endfor %}=
 <form method="post" action="{% url 'exercise'}">
@@ -26,6 +26,7 @@ exercise done :
 {% for r in exerciseDone %}
       {{r.name}}
 {% endfor %}
+
 
 
 {% endblock %}
