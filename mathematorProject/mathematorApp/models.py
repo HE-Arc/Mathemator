@@ -40,7 +40,7 @@ class ExerciseDone(models.Model):
     nbWrong = models.IntegerField()
     nbRight = models.IntegerField()
 
-class ExerciseOperations(Exercise):
+class ExerciseOperation(Exercise):
         rangeMin = models.DecimalField(max_digits=5, decimal_places=2)
         rangeMax = models.DecimalField(max_digits=5, decimal_places=2)
         rangeStep = models.DecimalField(max_digits=5, decimal_places=2)

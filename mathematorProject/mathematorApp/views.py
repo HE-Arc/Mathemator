@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .models import Exercise
-from .models import ExerciseOperations
+from .models import ExerciseOperation
 from .models import ExerciseFix
 from .models import Student
 
@@ -36,9 +36,9 @@ def login_view(request):
         form = AuthentificationForm()
     return render(request,'mathemator/login.html',{'form':form})
 
-def exerciseOperations(request, exercise_id):
+def exerciseOperation(request, exercise_id):
 
-    exercise = get_object_or_404(ExerciseOperations, pk=exercise_id)
+    exercise = get_object_or_404(ExerciseOperation, pk=exercise_id)
     exerciseRequirement = set(exercise.relationExerciseRequirement.all())
 
     current_user = request.user
@@ -46,12 +46,11 @@ def exerciseOperations(request, exercise_id):
     exerciseDone=set(student.relationExerciseDone.all())
 
     if exerciseDone.issubset(exerciseRequirement):
-
         listRandom=[]
         for i in range(-1,exercise.nbOperators):
             if i >= 0:
-                listRandomOperator.append(random.choice(exercise.operators))
-            listRandomOperator.append(random.randint(exercise.rangeMin,exercise.rangeMax))
+                listRandom.append(random.choice(exercise.operators))
+            listRandom.append(random.randint(exercise.rangeMin,exercise.rangeMax))
 
         return render(request, "exercises/exerciseOperations.html", {'exercise' : exercise, 'listRandom' : listRandom, "exerciseRequirement" : exerciseRequirement, "exerciseDone" : exerciseDone})
     else:

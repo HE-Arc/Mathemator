@@ -166,7 +166,7 @@
     }
   },
   {
-    "model": "mathematorApp.ExerciseOperations",
+    "model": "mathematorApp.ExerciseOperation",
     "pk": 2,
     "fields": {
       "rangeMin" : 0.0,
@@ -195,7 +195,7 @@
     }
   },
   {
-    "model": "mathematorApp.ExerciseOperations",
+    "model": "mathematorApp.ExerciseOperation",
     "pk": 4,
     "fields": {
       "rangeMin" : 0.0,
