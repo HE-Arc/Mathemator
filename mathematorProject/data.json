@@ -160,7 +160,17 @@
     "pk": 1,
     "fields": {
     "idStudent":1,
-    "idExercise":1,
+    "idExercise":2,
+    "nbWrong":3,
+    "nbRight":4
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseDone",
+    "pk": 2,
+    "fields": {
+    "idStudent":1,
+    "idExercise":3,
     "nbWrong":3,
     "nbRight":4
     }

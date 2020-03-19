@@ -45,7 +45,7 @@ def exerciseOperation(request, exercise_id):
     student = get_object_or_404(Student, pk=current_user.id)
     exerciseDone=set(student.relationExerciseDone.all())
 
-    if exerciseDone.issubset(exerciseRequirement):
+    if exerciseDone.issuperset(exerciseRequirement):
         listRandom=[]
         for i in range(-1,exercise.nbOperators):
             if i >= 0:
