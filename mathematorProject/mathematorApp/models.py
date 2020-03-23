@@ -10,7 +10,7 @@ class Student(models.Model):
     group = models.CharField(max_length=50)
     isTeacher = models.BooleanField(default=False)
     relationExerciseDone = models.ManyToManyField('Exercise', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
-    
+
 @receiver(post_save, sender=User)
 def create_user_student(sender, instance, created, **kwargs):
     if created:
@@ -28,28 +28,7 @@ class Exercise(models.Model):
     year = models.CharField(max_length=50)
     relationExerciseRequirement = models.ManyToManyField('self', through='ExerciseRequirement', symmetrical=False, related_name='related_to_exerciserequirement')
     relationExerciseDone =  models.ManyToManyField('Student', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
-    donnee = models.CharField(max_length=50,default ="")
-
-class ExerciseSimpleOperation(Exercise):
-    rangeMin = models.DecimalField(max_digits=5, decimal_places=2)
-    rangeMax = models.DecimalField(max_digits=5, decimal_places=2)
-    rangeStep = models.DecimalField(max_digits=5, decimal_places=2)
-    nbOperation = models.IntegerField()
-    ADDITION='+'
-    SOUSTRACTION='-'
-    DIVISION='/'
-    MULTIPLICATION='*'
-    OPERATORS_CHOICES = [
-        (ADDITION, 'addition'),
-        (SOUSTRACTION, 'soustraction'),
-        (DIVISION, 'division'),
-        (MULTIPLICATION, 'multiplication'),
-    ]
-    operators = models.CharField(
-        max_length=1,
-        choices=OPERATORS_CHOICES,
-        default=ADDITION,
-    )
+    question = models.CharField(max_length=50, default ="")
 
 class ExerciseRequirement(models.Model):
     idExercise = models.ForeignKey(Exercise, related_name='fromExercise', on_delete=models.CASCADE)
@@ -60,3 +39,27 @@ class ExerciseDone(models.Model):
     idExercise =  models.ForeignKey(Exercise,  on_delete=models.CASCADE)
     nbWrong = models.IntegerField()
     nbRight = models.IntegerField()
+
+class ExerciseOperation(Exercise):
+        rangeMin = models.DecimalField(max_digits=5, decimal_places=2)
+        rangeMax = models.DecimalField(max_digits=5, decimal_places=2)
+        rangeStep = models.DecimalField(max_digits=5, decimal_places=2)
+        nbOperators = models.IntegerField()
+        ADDITION='+'
+        SOUSTRACTION='-'
+        DIVISION='/'
+        MULTIPLICATION='*'
+        OPERATORS_CHOICES = [
+            (ADDITION, 'addition'),
+            (SOUSTRACTION, 'soustraction'),
+            (DIVISION, 'division'),
+            (MULTIPLICATION, 'multiplication'),
+        ]
+        operators = models.CharField(
+            max_length=4,
+            choices=OPERATORS_CHOICES,
+            default=ADDITION,
+        )
+
+class ExerciseFix(Exercise):
+        result = models.CharField(max_length=50, default ="")

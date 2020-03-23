@@ -129,8 +129,24 @@
     }
   },
   {
-    "model": "mathematorApp.Exercise",
+    "model": "mathematorApp.ExerciseRequirement",
     "pk": 2,
+    "fields": {
+    "idExercise":4,
+    "idExerciseRequirement":2
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseRequirement",
+    "pk": 3,
+    "fields": {
+    "idExercise":2,
+    "idExerciseRequirement":3
+    }
+  },
+  {
+    "model": "mathematorApp.Exercise",
+    "pk": 3,
     "fields": {
       "name":"ex2",
       "objective":"ob2",
@@ -144,22 +160,59 @@
     "pk": 1,
     "fields": {
     "idStudent":1,
-    "idExercise":1,
+    "idExercise":2,
     "nbWrong":3,
     "nbRight":4
     }
   },
   {
-    "model": "mathematorApp.ExerciseSimpleOperation",
+    "model": "mathematorApp.ExerciseDone",
+    "pk": 2,
+    "fields": {
+    "idStudent":1,
+    "idExercise":3,
+    "nbWrong":3,
+    "nbRight":4
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseOperation",
     "pk": 2,
     "fields": {
       "rangeMin" : 0.0,
       "rangeMax" : 10.0,
       "rangeStep" : 1.0,
       "operators":"+",
-      "nbOperation" : 1
-
+      "nbOperators" : 1
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseFix",
+    "pk": 3,
+    "fields": {
+      "result" : "ceciestunresultat"
+    }
+  },
+  {
+    "model": "mathematorApp.Exercise",
+    "pk": 4,
+    "fields": {
+      "name":"ex4",
+      "objective":"ob4",
+      "theme":"theme4",
+      "branches":"branche4",
+      "year":"4H"
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseOperation",
+    "pk": 4,
+    "fields": {
+      "rangeMin" : 0.0,
+      "rangeMax" : 10.0,
+      "rangeStep" : 1.0,
+      "operators":"+-*/",
+      "nbOperators" : 1
     }
   }
-
 ]
