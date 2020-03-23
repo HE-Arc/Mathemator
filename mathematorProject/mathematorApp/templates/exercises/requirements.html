@@ -6,7 +6,7 @@
 <h1>Pré-requis</h1>
 <p>Vous n'avez pas fait tous les exercices requis pour l'exercice : {{ exercise.name }}</p>
 <p>Il faut faire les exercices suivant :</p>
-{% for exercise in exerciseRequirement %}
-  <a href="{% url 'operations' exercise.id %}">{{ exercise.name }}</a>
+{% for ex in exerciseRequirement %}
+  <a href="{% url 'operations' ex.id %}">{{ ex.name }}</a>
 {% endfor %}
 {% endblock %}

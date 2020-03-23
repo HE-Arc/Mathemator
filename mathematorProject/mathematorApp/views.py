@@ -81,7 +81,9 @@ def exerciseFix(request, exercise_id):
     exerciseDone = set(student.relationExerciseDone.all())
 
     if exerciseDone.issubset(exerciseRequirement):
-        return render(request, "exercises/exerciseFix.html", {'exercise' : exercise})
+        return render(request, "exercises/exerciseFix.html",
+        {'exercise' : exercise, 'exercisesOp' : exercisesOp,
+        'exercisesFix': exercisesFix})
     else:
         return render(request, "exercises/requirements.html",
             {'exercise' : exercise,
