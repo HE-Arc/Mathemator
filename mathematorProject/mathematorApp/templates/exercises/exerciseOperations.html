@@ -4,16 +4,34 @@
 {% include 'exercises/exercises.html' %}
 <a href="#" data-target="#sidebar" data-toggle="collapse" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Exercises</a>
 <h1>Nom de l'exercice : {{exercise.name}}</h1>
+<p>Id de l'exercice : {{exercise.id}}</p>
 <p>Question de l'exercice : {{exercise.question}}</p>
 <p>liste des operateurs de l'exercice: {{exercise.operators}}</p>
 <p>range de l'exercice : {{exercise.rangeMin}} , {{exercise.rangeMax}}</p>
 
+result
+{{result}}
+
+<br>
+<br>
+{% if messages %}
+  {% for message in messages %}
+    {{ message }} <br>
+  {% endfor %}
+{% endif %}
+
+<br>
+<br>
 {% for r in listRandom %}
       {{r}}
 {% endfor %}=
-<form method="post" action="{% url 'exercise'}">
-<input type="text" name="result" value="">
-<input type="submit" value="Valider">
+<form method="post" action="/checkResult/">
+  {% csrf_token %}
+  <input type="text" id="resultInput" name="resultInput" value="">
+  <input type="hidden" name="next" value="{{ request.path }}">
+  <input type='hidden'  id="exercise_id" name="exercise_id" value={{exercise.id}} />
+  <input type='hidden'  id="result" name="result" value={{result}} />
+  <input type="submit" value="Valider">
 </form>
 
 exercises requirements :
@@ -28,7 +46,7 @@ exercise done :
 {% for r in exerciseDone %}
       {{r.name}}
 {% endfor %}
-
+<br>
 
 
 {% endblock %}

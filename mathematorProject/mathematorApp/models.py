@@ -53,7 +53,7 @@ class ExerciseOperation(Exercise):
             (ADDITION, 'addition'),
             (SOUSTRACTION, 'soustraction'),
             (DIVISION, 'division'),
-            (MULTIPLICATION, 'multiplication'),
+            (MULTIPLICATION, 'multiplication'),            
         ]
         operators = models.CharField(
             max_length=4,

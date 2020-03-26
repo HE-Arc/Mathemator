@@ -1,15 +1,17 @@
 from django.shortcuts import redirect,render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
+from django.contrib import messages
 from .models import Exercise
 from .models import ExerciseOperation
 from .models import ExerciseFix
 from .models import Student
-
+from .models import ExerciseDone
 import random
 
+ops = { "+": (lambda x,y: x+y), "-": (lambda x,y: x-y), '/': (lambda x,y: x/y), '*':(lambda x,y: x*y)} # etc.
 
 @login_required
 def index(request):
@@ -57,13 +59,18 @@ def exerciseOperation(request, exercise_id):
         for i in range(-1,exercise.nbOperators):
             if i >= 0:
                 listRandom.append(random.choice(exercise.operators))
-            listRandom.append(random.randint(exercise.rangeMin,exercise.rangeMax))
+            listRandom.append(random.randrange(exercise.rangeMin, exercise.rangeMax,exercise.rangeStep))
+
+        try:
+            result = eval("".join([str(elem) for elem in listRandom]))
+        except ZeroDivisionError:
+            return exerciseOperation(request, exercise_id)
 
         return render(request, "exercises/exerciseOperations.html",
             {'exercise' : exercise, 'listRandom' : listRandom,
             "exerciseRequirement" : exerciseRequirement,
             "exerciseDone" : exerciseDone,'exercisesOp' : exercisesOp,
-            'exercisesFix': exercisesFix})
+            'exercisesFix': exercisesFix, 'result' : result })
     else:
         return render(request, "exercises/requirements.html",
             {'exercise' : exercise,
@@ -83,9 +90,32 @@ def exerciseFix(request, exercise_id):
     if exerciseDone.issubset(exerciseRequirement):
         return render(request, "exercises/exerciseFix.html",
         {'exercise' : exercise, 'exercisesOp' : exercisesOp,
-        'exercisesFix': exercisesFix})
+        'exercisesFix': exercisesFix, 'result' : exercise.result})
     else:
         return render(request, "exercises/requirements.html",
             {'exercise' : exercise,
             "exerciseRequirement" : exerciseRequirement,
             'exercisesOp' : exercisesOp, 'exercisesFix': exercisesFix})
+
+def checkResult(request):
+    try:
+        if float(request.POST.get('resultInput')) == float(request.POST.get('result')):
+            #mettre dans la base de donnée
+            current_user = request.user
+            student = get_object_or_404(Student, pk=current_user.id)
+            exercise_id=int(request.POST.get('exercise_id'))
+            # try:
+            #     exDone = ExerciseDone.objects.filter(idStudent=student.id, idExercise=exercise_id)
+            #     exDone.nbRight=exDone.nbRight+1
+            #     exDone.save()
+            # except ExerciseDone.DoesNotExist:
+            #     exercise = get_object_or_404(Exercise, pk=exercise_id)
+            #     student.relationExerciseDone.add(exercise)
+            messages.add_message(request, messages.INFO, 'Bravo')
+        else:
+            messages.add_message(request, messages.INFO, 'Nul !')
+    except ValueError:
+        messages.add_message(request, messages.INFO, 'Nul !')
+
+    next = request.POST.get('next', '/')
+    return HttpResponseRedirect(next)
