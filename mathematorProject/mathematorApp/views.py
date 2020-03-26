@@ -20,8 +20,20 @@ def profile(request):
     current_user = request.user
     student = get_object_or_404(Student, pk=current_user.id)
 
-    #exerciseDone=student.relationExerciseDone.all()
-    return render(request, "profile.html", {'student':student})
+    exercises = Exercise.objects.all()
+    exerciseDone=set(student.relationExerciseDone.all())
+    '''
+    exDoneOrNot = []
+    isDone = False
+    for ex in exercises:
+        for exDone in exerciseDone:
+            if exDone == ex:
+                isDone = True
+        exDoneOrNot.add(isDone)
+        isDone = False
+        '''
+    #exerciseRequirement = set(exercise.relationExerciseRequirement.all())
+    return render(request, "profile.html", {'student':student, "exercises":exercises, "exerciseDone":exerciseDone})
 
 def login(request):
     if request.user.is_authenticated:

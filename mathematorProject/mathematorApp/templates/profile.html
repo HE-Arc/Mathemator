@@ -5,23 +5,29 @@
 <div style="margin-left:5%;">
   <h2>{{student.group}}</h2>
   <div style="margin-left:5%;">
-    <h3>Nom de l'exercice</h3>
-    <table class="table" style="text-align:center; margin-top:2%;">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">Exercice 1</th>
-          <th scope="col">Exercice 2</th>
-          <th scope="col">Exercice 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Validé</td>
-          <td>Validé</td>
-          <td>non validé</td>
-        </tr>
-      </tbody>
-    </table>
+    <h3>Exercice</h3>
+    <div class="table-responsive">
+      <table class="table" style="text-align:center; margin-top:2%;">
+        <thead class="thead-light">
+          <tr>
+            {% for ex in exercises %}
+                <th scope="col">{{ex.name}}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for ex in exercises %}
+                {% if ex in exerciseDone %}
+                  <td scope="col" class="done">réussi</td>
+                {% else %}
+                <td scope="col" class="fail">raté</td>
+                {% endif %}
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 {% endblock %}

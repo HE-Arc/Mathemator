@@ -148,7 +148,7 @@
     "model": "mathematorApp.Exercise",
     "pk": 3,
     "fields": {
-      "name":"ex2",
+      "name":"ex3",
       "objective":"ob2",
       "theme":"theme2",
       "branches":"branche2",

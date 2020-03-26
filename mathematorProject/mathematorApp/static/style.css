@@ -138,3 +138,11 @@
 .registration{
   margin: auto;
 }
+
+.done{
+  background-color: lightgreen;
+}
+
+.fail{
+  background-color: lightsalmon;
+}
