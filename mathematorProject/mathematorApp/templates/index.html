@@ -1,35 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container-fluid">
-  <div class="row d-flex d-md-block flex-nowrap wrapper">
-    <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show"
-    id="sidebar">
-      <div class="list-group border-0 text-center text-md-left">
-        <a href="#menu1" class="list-group-item d-inline-block collapsed"
-          data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard">
-          </i> <span class="d-none d-md-inline">Dashboard</span> </a>
-        <div class="collapse" id="menu1" data-parent="#sidebar">
-          <a href="#menu1sub1" class="list-group-item" data-toggle="collapse"
-            aria-expanded="false">Subitem 1 </a>
-          <div class="collapse" id="menu1sub1" data-parent="#menu1">
-            <a href="#" class="list-group-item" data-parent="#menu1sub1">
-              Subitem a</a>
-            <a href="#" class="list-group-item" data-parent="#menu1sub1">
-              Subitem b</a>
-          </div>
-        </div>
-        </div>
-        </div>
-        </div>
-    <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
-      <a href="#" data-target="#sidebar" data-toggle="collapse"
-        class="btn btn-primary btn-lg active" role="button"
-        aria-pressed="true">Exercices</a>
-      <div class="page-header">
-        <h2 class="display-4 font-weight-light">Sidebar</h2>
-      </div>
-    </main>
-  </div>
-</div>
+{% include 'exercises/exercises.html' %}
+<main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
+  <a href="#" data-target="#sidebar" data-toggle="collapse" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Exercises</a>
+  <p class="lead">Welcome on Mathemators</p>
+  <a href="{% url 'logout' %}">Click here to logout.</a>
+</main>
 {% endblock %}

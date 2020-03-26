@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="row d-flex d-md-block flex-nowrap wrapper">
+    <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
+      <div class="list-group border-0 text-center text-md-left">
+        <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard">
+          </i> <span class="d-none d-md-inline">Exercises operations</span> </a>
+
+        {% for exercise in exercisesOp %}
+        <div class="collapse" id="menu1" data-parent="#sidebar">
+          <a href="{% url 'operations' exercise.id %}" class="list-group-item">{{ exercise.name }} </a>
+        </div>
+        {% endfor %}
+        <!--<div class="collapse" id="menu1sub1" data-parent="#menu1">
+            <a href="#" class="list-group-item" data-parent="#menu1sub1">
+              Subitem a</a>
+            <a href="#" class="list-group-item" data-parent="#menu1sub1">
+              Subitem b</a>-->
+      </div>
+
+      <div class="list-group border-0 text-center text-md-left">
+        <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard">
+          </i> <span class="d-none d-md-inline">Exercises Fix</span> </a>
+
+        {% for exercise in exercisesFix %}
+        <div class="collapse" id="menu2" data-parent="#sidebar">
+          <a href="{% url 'fix' exercise.id %}" class="list-group-item">{{ exercise.name }} </a>
+        </div>
+        {% endfor %}
+        <!--<div class="collapse" id="menu1sub1" data-parent="#menu1">
+            <a href="#" class="list-group-item" data-parent="#menu1sub1">
+              Subitem a</a>
+            <a href="#" class="list-group-item" data-parent="#menu1sub1">
+              Subitem b</a>-->
+      </div>
+    </div>
+  </div>
+</div>

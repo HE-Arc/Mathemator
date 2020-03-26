@@ -2,6 +2,7 @@ from django.shortcuts import redirect,render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.views import generic, View
 from .models import Exercise
 from .models import ExerciseOperation
 from .models import ExerciseFix
@@ -9,11 +10,14 @@ from .models import Student
 
 import random
 
-from django.views.generic import TemplateView
 
 @login_required
 def index(request):
-    return render(request, "index.html", {})
+    exercisesOp = ExerciseOperation.objects.all()
+    exercisesFix = ExerciseFix.objects.all()
+
+    return render(request, "index.html", {'exercisesOp' : exercisesOp,
+        'exercisesFix': exercisesFix})
 
 @login_required
 def profile(request):
@@ -51,6 +55,9 @@ def login_view(request):
 def exerciseOperation(request, exercise_id):
 
     exercise = get_object_or_404(ExerciseOperation, pk=exercise_id)
+    exercisesOp = ExerciseOperation.objects.all()
+    exercisesFix = ExerciseFix.objects.all()
+
     exerciseRequirement = set(exercise.relationExerciseRequirement.all())
 
     current_user = request.user
@@ -64,13 +71,21 @@ def exerciseOperation(request, exercise_id):
                 listRandom.append(random.choice(exercise.operators))
             listRandom.append(random.randint(exercise.rangeMin,exercise.rangeMax))
 
-        return render(request, "exercises/exerciseOperations.html", {'exercise' : exercise, 'listRandom' : listRandom, "exerciseRequirement" : exerciseRequirement, "exerciseDone" : exerciseDone})
+        return render(request, "exercises/exerciseOperations.html",
+            {'exercise' : exercise, 'listRandom' : listRandom,
+            "exerciseRequirement" : exerciseRequirement,
+            "exerciseDone" : exerciseDone,'exercisesOp' : exercisesOp,
+            'exercisesFix': exercisesFix})
     else:
-        # TODO : message pour information que l'on n'a pas acces à l'exercice
-        return redirect('/')
+        return render(request, "exercises/requirements.html",
+            {'exercise' : exercise,
+            "exerciseRequirement" : exerciseRequirement,
+            'exercisesOp' : exercisesOp, 'exercisesFix': exercisesFix})
 
 def exerciseFix(request, exercise_id):
     exercise = get_object_or_404(ExerciseFix, pk=exercise_id)
+    exercisesOp = ExerciseOperation.objects.all()
+    exercisesFix = ExerciseFix.objects.all()
     exerciseRequirement = set(exercise.relationExerciseRequirement.all())
 
     current_user = request.user
@@ -78,7 +93,11 @@ def exerciseFix(request, exercise_id):
     exerciseDone = set(student.relationExerciseDone.all())
 
     if exerciseDone.issubset(exerciseRequirement):
-        return render(request, "exercises/exerciseFix.html", {'exercise' : exercise})
+        return render(request, "exercises/exerciseFix.html",
+        {'exercise' : exercise, 'exercisesOp' : exercisesOp,
+        'exercisesFix': exercisesFix})
     else:
-        # TODO : message pour information que l'on n'a pas acces à l'exercice
-        return redirect('/')
+        return render(request, "exercises/requirements.html",
+            {'exercise' : exercise,
+            "exerciseRequirement" : exerciseRequirement,
+            'exercisesOp' : exercisesOp, 'exercisesFix': exercisesFix})

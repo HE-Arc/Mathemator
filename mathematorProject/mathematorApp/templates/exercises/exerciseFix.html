@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% include 'exercises/exercises.html' %}
+<a href="#" data-target="#sidebar" data-toggle="collapse" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Exercises</a>
 <h1>{{exercise.name}}</h1>
 <p>Année : {{exercise.year}}</p>
 <p>Question : {{exercise.question}}</p>
