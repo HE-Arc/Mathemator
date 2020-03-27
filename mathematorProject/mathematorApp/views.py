@@ -8,6 +8,7 @@ from .models import Exercise
 from .models import ExerciseOperation
 from .models import ExerciseFix
 from .models import Student
+from .models import ExerciseRequirement
 from .models import ExerciseDone
 import random
 
@@ -22,7 +23,19 @@ def index(request):
 def profile(request):
     current_user = request.user
     student = get_object_or_404(Student, pk=current_user.id)
-    return render(request, "profile.html", {'student':student})
+    exercises = Exercise.objects.all()
+    exerciseDone= student.relationExerciseDone.all()
+    exercisesOp = ExerciseOperation.objects.all()
+    exerciseFix = ExerciseFix.objects.all()
+    exDone = set()
+    
+    for exD in exerciseDone:
+        exDone.add(exD.id)
+
+    return render(request, "profile.html",
+        {'student':student, "exercises":exercises,
+         "exerciseDone":exerciseDone, "exerciseOperation" : exercisesOp,
+         "exerciseFix" : exerciseFix, "exDone":exDone})
 
 def login(request):
     if request.user.is_authenticated:
