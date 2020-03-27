@@ -41,7 +41,6 @@ def login_view(request):
     return render(request,'mathemator/login.html',{'form':form})
 
 def exerciseOperation(request, exercise_id):
-
     exercise = get_object_or_404(ExerciseOperation, pk=exercise_id)
     exercisesOp = ExerciseOperation.objects.all()
     exercisesFix = ExerciseFix.objects.all()
@@ -53,7 +52,7 @@ def exerciseOperation(request, exercise_id):
     exerciseDone=set(student.relationExerciseDone.all())
 
     # TODO : gérer le cas ou il y a pas d'exercice requis !!
-    if exerciseDone.issuperset(exerciseRequirement):
+    if len(exerciseRequirement) == 0 or exerciseDone.issuperset(exerciseRequirement):
         listRandom=[]
         for i in range(-1,exercise.nbOperators):
             if i >= 0:
@@ -86,7 +85,7 @@ def exerciseFix(request, exercise_id):
     student = get_object_or_404(Student, pk=current_user.id)
     exerciseDone = set(student.relationExerciseDone.all())
 
-    if exerciseDone.issubset(exerciseRequirement):
+    if len(exerciseRequirement) == 0 or exerciseDone.issuperset(exerciseRequirement):
         return render(request, "exercises/exerciseFix.html",
         {'exercise' : exercise, 'exercisesOp' : exercisesOp,
         'exercisesFix': exercisesFix, 'result' : exercise.result})

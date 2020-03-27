@@ -63,4 +63,4 @@ class ExerciseOperation(Exercise):
         # TODO : gerer le choix de plusieurs operateurs
 
 class ExerciseFix(Exercise):
-        result = models.CharField(max_length=50, default ="")
+        result = models.FloatField()
