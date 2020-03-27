@@ -23,8 +23,6 @@ def index(request):
 def profile(request):
     current_user = request.user
     student = get_object_or_404(Student, pk=current_user.id)
-
-    #exerciseDone=student.relationExerciseDone.all()
     return render(request, "profile.html", {'student':student})
 
 def login(request):
@@ -51,7 +49,6 @@ def exerciseOperation(request, exercise_id):
     student = get_object_or_404(Student, pk=current_user.id)
     exerciseDone=set(student.relationExerciseDone.all())
 
-    # TODO : gérer le cas ou il y a pas d'exercice requis !!
     if len(exerciseRequirement) == 0 or exerciseDone.issuperset(exerciseRequirement):
         listRandom=[]
         for i in range(-1,exercise.nbOperators):

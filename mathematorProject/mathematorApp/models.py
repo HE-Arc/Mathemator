@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.core.validators import RegexValidator
 
 # Create your models here.
 
@@ -45,22 +46,12 @@ class ExerciseOperation(Exercise):
         rangeMax = models.DecimalField(max_digits=5, decimal_places=2)
         rangeStep = models.DecimalField(max_digits=5, decimal_places=2)
         nbOperators = models.IntegerField()
-        ADDITION='+'
-        SOUSTRACTION='-'
-        DIVISION='/'
-        MULTIPLICATION='*'
-        OPERATORS_CHOICES = [
-            (ADDITION, 'addition'),
-            (SOUSTRACTION, 'soustraction'),
-            (DIVISION, 'division'),
-            (MULTIPLICATION, 'multiplication'),
-        ]
+        regexValidator = RegexValidator("^[\+\*\/\-]*$")
         operators = models.CharField(
-            max_length=4,
-            choices=OPERATORS_CHOICES,
-            default=ADDITION,
+            max_length = 10,
+            default = '+',
+            validators = [regexValidator]
         )
-        # TODO : gerer le choix de plusieurs operateurs
 
 class ExerciseFix(Exercise):
         result = models.FloatField()
