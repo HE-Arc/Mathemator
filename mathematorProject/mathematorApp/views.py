@@ -11,8 +11,6 @@ from .models import Student
 from .models import ExerciseDone
 import random
 
-ops = { "+": (lambda x,y: x+y), "-": (lambda x,y: x-y), '/': (lambda x,y: x/y), '*':(lambda x,y: x*y)} # etc.
-
 @login_required
 def index(request):
     exercisesOp = ExerciseOperation.objects.all()
@@ -54,6 +52,7 @@ def exerciseOperation(request, exercise_id):
     student = get_object_or_404(Student, pk=current_user.id)
     exerciseDone=set(student.relationExerciseDone.all())
 
+    # TODO : gérer le cas ou il y a pas d'exercice requis !!
     if exerciseDone.issuperset(exerciseRequirement):
         listRandom=[]
         for i in range(-1,exercise.nbOperators):
@@ -62,7 +61,7 @@ def exerciseOperation(request, exercise_id):
             listRandom.append(random.randrange(exercise.rangeMin, exercise.rangeMax,exercise.rangeStep))
 
         try:
-            result = eval("".join([str(elem) for elem in listRandom]))
+            result = eval("".join([str(element) for element in listRandom]))
         except ZeroDivisionError:
             return exerciseOperation(request, exercise_id)
 
@@ -100,22 +99,32 @@ def exerciseFix(request, exercise_id):
 def checkResult(request):
     try:
         if float(request.POST.get('resultInput')) == float(request.POST.get('result')):
-            #mettre dans la base de donnée
-            current_user = request.user
-            student = get_object_or_404(Student, pk=current_user.id)
-            exercise_id=int(request.POST.get('exercise_id'))
-            # try:
-            #     exDone = ExerciseDone.objects.filter(idStudent=student.id, idExercise=exercise_id)
-            #     exDone.nbRight=exDone.nbRight+1
-            #     exDone.save()
-            # except ExerciseDone.DoesNotExist:
-            #     exercise = get_object_or_404(Exercise, pk=exercise_id)
-            #     student.relationExerciseDone.add(exercise)
+            isRight = True
             messages.add_message(request, messages.INFO, 'Bravo')
         else:
+            isRight = False
             messages.add_message(request, messages.INFO, 'Nul !')
+
     except ValueError:
+        isRight = False
         messages.add_message(request, messages.INFO, 'Nul !')
+
+    try:
+        exDone = ExerciseDone.objects.get(idStudent=request.user.id, idExercise=request.POST.get('exercise_id'))
+        if isRight:
+            exDone.nbRight=exDone.nbRight + 1
+        else:
+            exDone.nbWrong=exDone.nbWrong + 1
+        exDone.save()
+
+    except ExerciseDone.DoesNotExist:
+        exercise = get_object_or_404(Exercise, pk=request.POST.get('exercise_id'))
+        current_user = request.user
+        student = get_object_or_404(Student, pk=current_user.id)
+        if isRight:
+            ExerciseDone.objects.create(idStudent=student, idExercise=exercise, nbRight=1, nbWrong=0)
+        else:
+            ExerciseDone.objects.create(idStudent=student, idExercise=exercise, nbRight=0, nbWrong=1)
 
     next = request.POST.get('next', '/')
     return HttpResponseRedirect(next)

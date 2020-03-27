@@ -7,4 +7,13 @@
 <p>Année : {{exercise.year}}</p>
 <p>Question : {{exercise.question}}</p>
 <p>Résultat : {{exercise.result}}</p>
+
+<form method="post" action="/checkResult/">
+  {% csrf_token %}
+  <input type="text" id="resultInput" name="resultInput" value="">
+  <input type="hidden" name="next" value="{{ request.path }}">
+  <input type='hidden'  id="exercise_id" name="exercise_id" value={{exercise.id}} />
+  <input type='hidden'  id="result" name="result" value={{result}} />
+  <input type="submit" value="Valider">
+</form>
 {% endblock %}

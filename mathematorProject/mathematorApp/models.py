@@ -53,13 +53,14 @@ class ExerciseOperation(Exercise):
             (ADDITION, 'addition'),
             (SOUSTRACTION, 'soustraction'),
             (DIVISION, 'division'),
-            (MULTIPLICATION, 'multiplication'),            
+            (MULTIPLICATION, 'multiplication'),
         ]
         operators = models.CharField(
             max_length=4,
             choices=OPERATORS_CHOICES,
             default=ADDITION,
         )
+        # TODO : gerer le choix de plusieurs operateurs
 
 class ExerciseFix(Exercise):
         result = models.CharField(max_length=50, default ="")
