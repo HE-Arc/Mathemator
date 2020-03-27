@@ -15,7 +15,6 @@ import random
 def index(request):
     exercisesOp = ExerciseOperation.objects.all()
     exercisesFix = ExerciseFix.objects.all()
-
     return render(request, "index.html", {'exercisesOp' : exercisesOp,
         'exercisesFix': exercisesFix})
 
@@ -100,7 +99,6 @@ def checkResult(request):
         else:
             isRight = False
             messages.add_message(request, messages.INFO, 'Nul !')
-
     except ValueError:
         isRight = False
         messages.add_message(request, messages.INFO, 'Nul !')
@@ -112,7 +110,6 @@ def checkResult(request):
         else:
             exDone.nbWrong=exDone.nbWrong + 1
         exDone.save()
-
     except ExerciseDone.DoesNotExist:
         exercise = get_object_or_404(Exercise, pk=request.POST.get('exercise_id'))
         current_user = request.user
