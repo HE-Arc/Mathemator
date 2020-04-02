@@ -27,7 +27,7 @@
         "username": "jules",
         "first_name": "Jules",
         "last_name": "Smith",
-        "email": "jules@ecole.com",
+        "email": "jules@ddr.com",
         "is_staff": false,
         "is_active": true,
         "date_joined": "2020-03-15T17:50:35.866Z",
@@ -44,8 +44,8 @@
         "is_superuser": false,
         "username": "julie",
         "first_name": "Julie",
-        "last_name": "Smith",
-        "email": "julie@ecole.com",
+        "last_name": "Jonnson",
+        "email": "julie@jp.com",
         "is_staff": false,
         "is_active": true,
         "date_joined": "2020-03-15T17:50:35.878Z",
@@ -76,7 +76,7 @@
     "pk": 2,
     "fields": {
       "user":2,
-      "group":"6e",
+      "group":"2e12",
       "isTeacher":false
     }
   },
@@ -85,7 +85,7 @@
     "pk": 3,
     "fields": {
       "user":3,
-      "group":"7e",
+      "group":"1e15",
       "isTeacher":false
     }
   },
@@ -102,10 +102,10 @@
     "model": "mathematorApp.Exercise",
     "pk": 1,
     "fields": {
-      "name":"ex1",
-      "objective":"ob1",
-      "theme":"theme1",
-      "branches":"branche1",
+      "name":"exercice 1",
+      "objective":"Réussir à faire le calcul suivant",
+      "theme":"opérations basiques",
+      "branches":"Mathematique 1e",
       "year":"1H"
     }
   },
@@ -113,19 +113,63 @@
     "model": "mathematorApp.Exercise",
     "pk": 2,
     "fields": {
-      "name":"ex2",
-      "objective":"ob2",
-      "theme":"theme2",
-      "branches":"branche2",
+      "name":"exercice 2",
+      "objective":"Réussir à faire le calcul présenté",
+      "theme":"opérations basiques",
+      "branches":"Mathematique 2e",
       "year":"2H"
+    }
+  },
+  {
+    "model": "mathematorApp.Exercise",
+    "pk": 3,
+    "fields": {
+      "name":"exercice 3",
+      "objective":"Accomplissez le calcul, opérations diverses",
+      "theme":"opérations basiques",
+      "branches":"Mathematique 2e",
+      "year":"2H"
+    }
+  },
+  {
+    "model": "mathematorApp.Exercise",
+    "pk": 4,
+    "fields": {
+      "name":"exercice 4",
+      "objective":"Calculer, plus difficile",
+      "theme":"opérations basiques",
+      "branches":"Mathematique 2e",
+      "year":"4H"
+    }
+  },
+  {
+    "model": "mathematorApp.Exercise",
+    "pk": 5,
+    "fields": {
+      "name":"exercice 5",
+      "objective":"Accomplissez le calcul",
+      "theme":"opérations multiples",
+      "branches":"Mathematique 2e",
+      "year":"4H"
+    }
+  },
+  {
+    "model": "mathematorApp.Exercise",
+    "pk": 6,
+    "fields": {
+      "name":"exercice 6",
+      "objective":"Accomplissez le calcul",
+      "theme":"opérations fix",
+      "branches":"Mathematique 2e",
+      "year":"4H"
     }
   },
   {
     "model": "mathematorApp.ExerciseRequirement",
     "pk": 1,
     "fields": {
-    "idExercise":1,
-    "idExerciseRequirement":2
+    "idExercise":5,
+    "idExerciseRequirement":4
     }
   },
   {
@@ -133,34 +177,39 @@
     "pk": 2,
     "fields": {
     "idExercise":4,
-    "idExerciseRequirement":2
+    "idExerciseRequirement":3
     }
   },
   {
     "model": "mathematorApp.ExerciseRequirement",
     "pk": 3,
     "fields": {
-    "idExercise":2,
-    "idExerciseRequirement":3
+    "idExercise":3,
+    "idExerciseRequirement":2
     }
   },
   {
-    "model": "mathematorApp.Exercise",
-    "pk": 3,
+    "model": "mathematorApp.ExerciseRequirement",
+    "pk": 4,
     "fields": {
-      "name":"ex3",
-      "objective":"ob2",
-      "theme":"theme2",
-      "branches":"branche2",
-      "year":"2H"
+    "idExercise":2,
+    "idExerciseRequirement":1
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseRequirement",
+    "pk": 5,
+    "fields": {
+    "idExercise":6,
+    "idExerciseRequirement":1
     }
   },
   {
     "model": "mathematorApp.ExerciseDone",
     "pk": 1,
     "fields": {
-    "idStudent":1,
-    "idExercise":2,
+    "idStudent":2,
+    "idExercise":1,
     "nbWrong":3,
     "nbRight":4
     }
@@ -169,15 +218,25 @@
     "model": "mathematorApp.ExerciseDone",
     "pk": 2,
     "fields": {
-    "idStudent":1,
-    "idExercise":3,
+    "idStudent":3,
+    "idExercise":1,
+    "nbWrong":0,
+    "nbRight":1
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseDone",
+    "pk": 2,
+    "fields": {
+    "idStudent":3,
+    "idExercise":2,
     "nbWrong":3,
     "nbRight":4
     }
   },
   {
     "model": "mathematorApp.ExerciseOperation",
-    "pk": 2,
+    "pk": 1,
     "fields": {
       "rangeMin" : 0.0,
       "rangeMax" : 10.0,
@@ -187,21 +246,25 @@
     }
   },
   {
-    "model": "mathematorApp.ExerciseFix",
-    "pk": 3,
+    "model": "mathematorApp.ExerciseOperation",
+    "pk": 2,
     "fields": {
-      "result" : 14.3
+      "rangeMin" : 0.0,
+      "rangeMax" : 100.0,
+      "rangeStep" : 1.0,
+      "operators":"+",
+      "nbOperators" : 1
     }
   },
   {
-    "model": "mathematorApp.Exercise",
-    "pk": 4,
+    "model": "mathematorApp.ExerciseOperation",
+    "pk": 3,
     "fields": {
-      "name":"ex4",
-      "objective":"ob4",
-      "theme":"theme4",
-      "branches":"branche4",
-      "year":"4H"
+      "rangeMin" : 0.0,
+      "rangeMax" : 100.0,
+      "rangeStep" : 1.0,
+      "operators":"-",
+      "nbOperators" : 1
     }
   },
   {
@@ -209,10 +272,28 @@
     "pk": 4,
     "fields": {
       "rangeMin" : 0.0,
-      "rangeMax" : 10.0,
+      "rangeMax" : 50.0,
       "rangeStep" : 1.0,
       "operators":"+-*/",
       "nbOperators" : 1
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseOperation",
+    "pk": 5,
+    "fields": {
+      "rangeMin" : 0.0,
+      "rangeMax" : 100.0,
+      "rangeStep" : 1.0,
+      "operators":"+-*/",
+      "nbOperators" : 2
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseFix",
+    "pk": 6,
+    "fields": {
+      "result" : 14.3
     }
   }
 ]
