@@ -2,12 +2,12 @@
   <div class="row d-flex d-md-block flex-nowrap wrapper">
     <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
       <div class="list-group border-0 text-center text-md-left">
-        <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard">
+        <a href="#menuOp" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" onclick='showAllMenu("menuOp")'><i class="fa fa-dashboard">
           </i> <span class="d-none d-md-inline">Exercises operations</span> </a>
 
         {% for exercise in exercisesOp %}
-        <div class="collapse" id="menu1" data-parent="#sidebar">
-          <a href="{% url 'operations' exercise.id %}" class="list-group-item">{{ exercise.name }} </a>
+        <div class="collapse" id="menuOp" data-parent="#sidebar">
+          <a href="{% url 'operations' exercise.id %}" class="list-group-item" >{{ exercise.name }} </a>
         </div>
         {% endfor %}
         <!--<div class="collapse" id="menu1sub1" data-parent="#menu1">
@@ -18,11 +18,11 @@
       </div>
 
       <div class="list-group border-0 text-center text-md-left">
-        <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard">
+        <a href="#menuFix" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard">
           </i> <span class="d-none d-md-inline">Exercises Fix</span> </a>
 
         {% for exercise in exercisesFix %}
-        <div class="collapse" id="menu2" data-parent="#sidebar">
+        <div class="collapse" id="menuFix" data-parent="#sidebar">
           <a href="{% url 'fix' exercise.id %}" class="list-group-item">{{ exercise.name }} </a>
         </div>
         {% endfor %}
