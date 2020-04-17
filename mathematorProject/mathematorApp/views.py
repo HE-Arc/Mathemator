@@ -24,13 +24,14 @@ def profile(request):
     current_user = request.user
     student = get_object_or_404(Student, pk=current_user.id)
     exercises = Exercise.objects.all()
-    exerciseDone= student.relationExerciseDone.all()
+    exerciseDone= ExerciseDone.objects.filter(idStudent=current_user.id)
     exercisesOp = ExerciseOperation.objects.all()
     exerciseFix = ExerciseFix.objects.all()
     exDone = set()
-    
     for exD in exerciseDone:
-        exDone.add(exD.id)
+        if exD.nbRight > 0:
+            exDone.add(exD.idExercise.id)
+
 
     return render(request, "profile.html",
         {'student':student, "exercises":exercises,

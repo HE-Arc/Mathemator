@@ -1,6 +1,15 @@
 [
   {
     "model": "mathematorApp.Student",
+    "pk": 1,
+    "fields": {
+      "user":1,
+      "group":"admin",
+      "isTeacher":false
+    }
+  },
+  {
+    "model": "mathematorApp.Student",
     "pk": 2,
     "fields": {
       "user":2,
