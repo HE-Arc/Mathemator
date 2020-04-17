@@ -190,7 +190,7 @@
     "model": "mathematorApp.ExerciseFix",
     "pk": 3,
     "fields": {
-      "result" : "ceciestunresultat"
+      "result" : 14.3
     }
   },
   {

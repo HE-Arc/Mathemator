@@ -2,8 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
-# Create your models here.
+from django.core.validators import RegexValidator
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -45,21 +44,12 @@ class ExerciseOperation(Exercise):
         rangeMax = models.DecimalField(max_digits=5, decimal_places=2)
         rangeStep = models.DecimalField(max_digits=5, decimal_places=2)
         nbOperators = models.IntegerField()
-        ADDITION='+'
-        SOUSTRACTION='-'
-        DIVISION='/'
-        MULTIPLICATION='*'
-        OPERATORS_CHOICES = [
-            (ADDITION, 'addition'),
-            (SOUSTRACTION, 'soustraction'),
-            (DIVISION, 'division'),
-            (MULTIPLICATION, 'multiplication'),
-        ]
+        regexValidator = RegexValidator("^[\+\*\/\-]*$")
         operators = models.CharField(
-            max_length=4,
-            choices=OPERATORS_CHOICES,
-            default=ADDITION,
+            max_length = 10,
+            default = '+',
+            validators = [regexValidator]
         )
 
 class ExerciseFix(Exercise):
-        result = models.CharField(max_length=50, default ="")
+        result = models.FloatField()
