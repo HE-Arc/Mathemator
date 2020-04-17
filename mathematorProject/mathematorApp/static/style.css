@@ -2,7 +2,7 @@
   overflow: hidden;
   z-index: 3;
   background-color: #333;
-  min-height: 100vh;
+  min-height: 800vh;
 }
 
 #sidebar .list-group {
@@ -146,4 +146,13 @@
 
 .fail{
   background-color: lightsalmon;
+}
+
+#profile-menu{
+    position: absolute;
+    left: -85%;
+}
+
+#exercise-button{
+  /* I don't know */
 }
