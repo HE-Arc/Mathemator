@@ -16,10 +16,6 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="{% url 'index' %}"">Mathemator</a>
-  <!-- Toggler/collapsibe Button -->
-  <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-        </button>
         <!-- Links -->
         <ul class="navbar-nav" style="position:relative;margin-left:auto">
           <!-- Dropdown -->
@@ -27,7 +23,7 @@
             <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">
               Profile
             </a>
-            <div class="dropdown-menu">
+            <div id="profile-menu" class="dropdown-menu">
               <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
               <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
             </div>
