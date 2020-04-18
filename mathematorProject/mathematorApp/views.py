@@ -1,3 +1,11 @@
+'''
+Mathemator
+Roxane Carraux - Edwin Claude - Loïc Jurasz
+Avril 2020
+He-Arc
+'''
+
+#Importations
 from django.shortcuts import redirect,render, get_object_or_404
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -12,6 +20,9 @@ from .models import ExerciseRequirement
 from .models import ExerciseDone
 import random
 
+'''
+Index Page
+'''
 @login_required
 def index(request):
     exercisesOp = ExerciseOperation.objects.all()
@@ -19,6 +30,9 @@ def index(request):
     return render(request, "index.html", {'exercisesOp' : exercisesOp,
         'exercisesFix': exercisesFix})
 
+'''
+Profile Page
+'''
 @login_required
 def profile(request):
     current_user = request.user
@@ -37,12 +51,18 @@ def profile(request):
          "exerciseDone":exerciseDone, "exerciseOperation" : exercisesOp,
          "exerciseFix" : exerciseFix, "exDone":exDone})
 
+'''
+Login Page
+'''
 def login(request):
     if request.user.is_authenticated:
         return render(request, "index.html", {})
     else:
         return login(request)
 
+'''
+Login Request
+'''
 def login_view(request):
     if request.method == 'POST':
         print("error, no post")
@@ -50,6 +70,12 @@ def login_view(request):
         form = AuthentificationForm()
     return render(request,'mathemator/login.html',{'form':form})
 
+'''
+ExerciseOperation view
+- Verify requirements
+- Generate operator and random numbers for operations
+- Generate result
+'''
 def exerciseOperation(request, exercise_id):
     exercise = get_object_or_404(ExerciseOperation, pk=exercise_id)
     exercisesOp = ExerciseOperation.objects.all()
@@ -87,6 +113,10 @@ def exerciseOperation(request, exercise_id):
             "exerciseRequirement" : exerciseRequirement,
             'exercisesOp' : exercisesOp, 'exercisesFix': exercisesFix})
 
+'''
+Exercise Fix view
+- Verify requirements
+'''
 def exerciseFix(request, exercise_id):
     exercise = get_object_or_404(ExerciseFix, pk=exercise_id)
     exercisesOp = ExerciseOperation.objects.all()
@@ -110,17 +140,21 @@ def exerciseFix(request, exercise_id):
             "exerciseRequirement" : exerciseRequirement,
             'exercisesOp' : exercisesOp, 'exercisesFix': exercisesFix})
 
+'''
+Method to check if the answer of the user is right
+Update the table exerciseDone
+'''
 def checkResult(request):
     try:
         if float(request.POST.get('resultInput')) == float(request.POST.get('result')):
             isRight = True
-            messages.add_message(request, messages.INFO, 'Bravo ta résponse est juste !')
+            messages.add_message(request, messages.INFO, 'Bravo ta réponse est juste !')
         else:
             isRight = False
-            messages.add_message(request, messages.INFO, 'Ta résponse est fausse !')
+            messages.add_message(request, messages.INFO, 'Ta réponse est fausse !')
     except ValueError:
         isRight = False
-        messages.add_message(request, messages.INFO, 'Ta résponse est fausse ! Fait attention ta réponse doit être un nombre.')
+        messages.add_message(request, messages.INFO, 'Ta réponse est fausse ! Fais attention, ta réponse doit être un nombre.')
 
     try:
         exDone = ExerciseDone.objects.get(idStudent=request.user.id, idExercise=request.POST.get('exercise_id'))

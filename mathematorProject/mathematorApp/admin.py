@@ -1,6 +1,12 @@
+'''
+Mathemator
+Roxane Carraux - Edwin Claude - Loïc Jurasz
+Avril 2020
+He-Arc
+'''
+
 from django.contrib import admin
 
-# Register your models here.
 from .models import Student
 from .models import Exercise
 from .models import ExerciseRequirement

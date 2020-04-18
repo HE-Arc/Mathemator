@@ -1,8 +1,8 @@
-{% extends "base_registration.html" %}
+{% extends "registration/base_registration.html" %}
 
 {% block content %}
   <div class="registration">
-    <h2 class="display-4 font-weight-light">Vous n'êtes plus loggé!</h2>
-    <a href="{% url 'login' %}">Cliquez ici pour vous logger de nouveau</a>
+    <h2 class="display-4 font-weight-light">Vous n'êtes plus connecté!</h2>
+    <a href="{% url 'login' %}">Cliquez ici pour vous connecter de nouveau</a>
   </div>
 {% endblock %}

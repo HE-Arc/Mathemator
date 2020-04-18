@@ -1,5 +1,9 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
+'''
+Mathemator
+Roxane Carraux - Edwin Claude - Loïc Jurasz
+Avril 2020
+He-Arc
+'''
 import os
 import sys
 

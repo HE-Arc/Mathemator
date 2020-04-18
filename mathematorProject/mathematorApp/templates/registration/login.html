@@ -1,42 +1,41 @@
-{% extends "base_registration.html" %}
+{% extends "registration/base_registration.html" %}
 
 {% block content %}
   <div class="registration">
     {% if form.errors %}
-      <p>Your username and password didn't match. Please try again.</p>
+      <p>Il y a une erreur dans votre identifiant ou votre mot de passe</p>
     {% endif %}
 
     {% if next %}
       {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
+        <p>Avec cet utilisateur vous n'avez pas accès à cette page. Veuillez vous connecter avec un autre compte utilisateur.</p>
       {% else %}
-        <h2>Please login to see this page.</h2>
+        <h2>Veuillez vous logger pour accéder à cette page</h2>
       {% endif %}
     {% endif %}
 
     {% if user.is_authenticated %}
-          <p> you're already logged</p>
+          <p>Vous êtes déjà connecté</p>
     {% else %}
-    
+
     <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
       <table class="table">
         <tr>
-          <td>{{ form.username.label_tag }}</td>
+          <td>Nom d'utilisateur : </td>
           <td>{{ form.username }}</td>
         </tr>
         <tr>
-          <td>{{ form.password.label_tag }}</td>
+          <td>Mot de passe : </td>
           <td>{{ form.password }}</td>
         </tr>
       </table>
-      <button class="btn btn-dark" type="submit" >login</button>
+      <button class="btn btn-dark" type="submit" >Se connecter</button>
       <input type="hidden" name="next" value="{{ next }}" />
     </form>
 
     {# Assumes you setup the password_reset view in your URLconf #}
-    <p><a href="{% url 'password_reset' %}">Lost password ?</a></p>
+    <p><a href="{% url 'password_reset' %}">Vous avez perdu votre mot de passe ?</a></p>
     {% endif %}
   </div>
 {% endblock %}

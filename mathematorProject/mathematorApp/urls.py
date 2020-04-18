@@ -1,3 +1,10 @@
+'''
+Mathemator
+Roxane Carraux - Edwin Claude - Loïc Jurasz
+Avril 2020
+He-Arc
+'''
+
 from django.urls import path
 from django.conf.urls import include
 from . import views
