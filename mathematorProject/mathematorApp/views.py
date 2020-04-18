@@ -32,7 +32,6 @@ def profile(request):
         if exD.nbRight > 0:
             exDone.add(exD.idExercise.id)
 
-
     return render(request, "profile.html",
         {'student':student, "exercises":exercises,
          "exerciseDone":exerciseDone, "exerciseOperation" : exercisesOp,
@@ -59,10 +58,13 @@ def exerciseOperation(request, exercise_id):
     exerciseRequirement = set(exercise.relationExerciseRequirement.all())
 
     current_user = request.user
-    student = get_object_or_404(Student, pk=current_user.id)
-    exerciseDone=set(student.relationExerciseDone.all())
+    exerciseDone=ExerciseDone.objects.filter(idStudent=current_user.id)
+    exercisesRight=set()
+    for exD in exerciseDone:
+        if exD.nbRight > 0:
+            exercisesRight.add(exD.idExercise)
 
-    if len(exerciseRequirement) == 0 or exerciseDone.issuperset(exerciseRequirement):
+    if len(exerciseRequirement) == 0 or exercisesRight.issuperset(exerciseRequirement):
         listRandom=[]
         for i in range(-1,exercise.nbOperators):
             if i >= 0:
@@ -92,10 +94,13 @@ def exerciseFix(request, exercise_id):
     exerciseRequirement = set(exercise.relationExerciseRequirement.all())
 
     current_user = request.user
-    student = get_object_or_404(Student, pk=current_user.id)
-    exerciseDone = set(student.relationExerciseDone.all())
+    exerciseDone=ExerciseDone.objects.filter(idStudent=current_user.id)
+    exercisesRight=set()
+    for exD in exerciseDone:
+        if exD.nbRight > 0:
+            exercisesRight.add(exD.idExercise)
 
-    if len(exerciseRequirement) == 0 or exerciseDone.issuperset(exerciseRequirement):
+    if len(exerciseRequirement) == 0 or exercisesRight.issuperset(exerciseRequirement):
         return render(request, "exercises/exerciseFix.html",
         {'exercise' : exercise, 'exercisesOp' : exercisesOp,
         'exercisesFix': exercisesFix, 'result' : exercise.result})
@@ -109,13 +114,13 @@ def checkResult(request):
     try:
         if float(request.POST.get('resultInput')) == float(request.POST.get('result')):
             isRight = True
-            messages.add_message(request, messages.INFO, 'Bravo')
+            messages.add_message(request, messages.INFO, 'Bravo ta résponse est juste !')
         else:
             isRight = False
-            messages.add_message(request, messages.INFO, 'Nul !')
+            messages.add_message(request, messages.INFO, 'Ta résponse est fausse !')
     except ValueError:
         isRight = False
-        messages.add_message(request, messages.INFO, 'Nul !')
+        messages.add_message(request, messages.INFO, 'Ta résponse est fausse ! Fait attention ta réponse doit être un nombre.')
 
     try:
         exDone = ExerciseDone.objects.get(idStudent=request.user.id, idExercise=request.POST.get('exercise_id'))
