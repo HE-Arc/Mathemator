@@ -1,58 +1,71 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div style="margin-left:2%;">
-  <h1>{{ user.get_username }}</h1>
-  <h2>{{student.group}}</h2>
-  <div style="margin-left:3%;margin-right:5%;margin-top:2%;">
-    <h3>Exercices Operations</h3>
-    <div class="table-responsive">
-      <table class="table" style="text-align:center; margin-top:2%;">
-        <thead class="black white-text">
-          <tr>
-            {% for ex in exerciseOperation %}
-                <th scope="col" ><a href="{% url 'operations' ex.id %}">{{ex.name}}</a></th>
-            {% endfor %}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            {% for ex in exerciseOperation %}
-                {% if ex.id in exDone %}
-                  <td scope="row" class="done">réussi</td>
-                {% else %}
-                  <td scope="row" class="fail">raté</td>
-                {% endif %}
-            {% endfor %}
-          </tr>
-        </tbody>
-      </table>
+
+  <main class="col-md-12 float-left col px-5 pl-md-5 pt-5">
+
+    <div>
+      <h1 class="display-3">{{ user.get_username }}</h1>
+      <br>
+      <div>
+      <h3>{{student.group}}</h3>
     </div>
 
-    <h3>Exercices Fixs</h3>
-    <div class="table-responsive">
-      <table class="table" style="text-align:center; margin-top:2%;">
-        <thead class="black white-text">
-          <tr>
-            {% for ex in exerciseFix %}
-              <th scope="col" ><a href="{% url 'fix' ex.id %}">{{ex.name}}</a></th>
-            {% endfor %}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            {% for ex in exerciseFix %}
-              {% if ex.id in exDone %}
-                <td scope="row" class="done">réussi</td>
-              {% else %}
-                <td scope="row" class="fail">raté</td>
-              {% endif %}
-            {% endfor %}
-            
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div
+    <br>
+    <div>
+      <h3>Opérations simples</h3>
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="black white-text">
+            <tr>
+              {% for ex in exerciseOperation %}
+                  <th scope="col" class="font-weight-bold text-center"><a href="{% url 'operations' ex.id %}">{{ex.name}}</a></th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {% for ex in exerciseOperation %}
+                  {% if ex.id in exDone %}
+                    <td scope="row" class="done text-center">Réussi</td>
+                  {% else %}
+                    <td scope="row" class="fail text-center">Pas encore réussi</td>
+                  {% endif %}
+              {% endfor %}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+        <h3>Logique et raisonnement</h3>
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="black white-text">
+              <tr>
+                {% for ex in exerciseFix %}
+                  <th scope="col" class="font-weight-bold text-center"><a href="{% url 'fix' ex.id %}">{{ex.name}}</a></th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {% for ex in exerciseFix %}
+                  {% if ex.id in exDone %}
+                    <td scope="row" class="done text-center">Réussi</td>
+                  {% else %}
+                    <td scope="row" class="fail text-center">Pas encore réussi</td>
+                  {% endif %}
+                {% endfor %}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br>
+      <br>
+      <form method="get" action="/">
+        <input  class=" btn btn-primary btn-lg float-sm-right" type="submit" value="Retour à la page d'accueil">
+      </form>
+    </div
+  </main>
 {% endblock %}

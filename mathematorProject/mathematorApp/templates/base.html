@@ -4,35 +4,36 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<head>
-  <meta charset="utf-8">
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-  <script src="https://kit.fontawesome.com/3f133a5aab.js" crossorigin="anonymous"></script>
-  <title>Mathemator</title>
-</head>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script src="https://kit.fontawesome.com/3f133a5aab.js" crossorigin="anonymous"></script>
+    <title>Mathemator</title>
+  </head>
 
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{% url 'index' %}"">Mathemator</a>
-        <!-- Links -->
-        <ul class="navbar-nav" style="position:relative;margin-left:auto">
-          <!-- Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">
-              Profile
-            </a>
-            <div id="profile-menu" class="dropdown-menu">
-              <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-            </div>
-          </li>
-        </ul>
-    </nav>
-  </header>
-</body>
-{% block content %}
-{% endblock %}
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'index' %}"">Mathemator</a>
+          <!-- Links -->
+          <ul class="navbar-nav" style="position:relative;margin-left:auto">
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">
+                Profile
+              </a>
+              <div id="profile-menu" class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </div>
+            </li>
+          </ul>
+      </nav>
+    </header>
+  </body>
+  
+  {% block content %}
 
+  {% endblock %}
 </html>
