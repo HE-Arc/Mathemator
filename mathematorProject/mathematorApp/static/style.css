@@ -147,11 +147,11 @@
 }
 
 .done{
-  background-color: #82ff80;
+  background-color: lightgreen;
 }
 
 .fail{
-  background-color: #fad4a5;
+  background-color: lightsalmon;
 }
 
 #profile-menu{
