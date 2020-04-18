@@ -21,7 +21,7 @@
     "model": "auth.user",
     "pk": 2,
     "fields": {
-        "password": "pbkdf2_sha256$180000$SnlTdVhjtHyG$vpIXPbLS1BfK2X3VV6+zxB/316cAQ+smvr3kVYDeR00=",
+        "password": "pbkdf2_sha256$180000$rUOgwzuBtu7J$17R92/UhowHb2qB/NeLsUsziM7WwrZo9Be5+2nP2VZc=",
         "last_login": null,
         "is_superuser": false,
         "username": "jules",
@@ -39,7 +39,7 @@
     "model": "auth.user",
     "pk": 3,
     "fields": {
-        "password": "pbkdf2_sha256$180000$pXYcpUXi8r9C$L0rDB6i7+HLiqpl5Sa8x5IfkEWLf/B4Y/plWwdPQ/Xk=",
+        "password": "pbkdf2_sha256$180000$y4qSELXNRHrb$yWIGW0uqZN3eJJC9Qx6lycQx9MUBsPnsHqS7/c6kGUI=",
         "last_login": null,
         "is_superuser": false,
         "username": "julie",
