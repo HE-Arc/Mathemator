@@ -1,41 +1,43 @@
 {% extends "registration/base_registration.html" %}
 
 {% block content %}
-  <div class="registration">
-    {% if form.errors %}
-      <p>Il y a une erreur dans votre identifiant ou votre mot de passe</p>
-    {% endif %}
-
-    {% if next %}
-      {% if user.is_authenticated %}
-        <p>Avec cet utilisateur vous n'avez pas accès à cette page. Veuillez vous connecter avec un autre compte utilisateur.</p>
-      {% else %}
-        <h2>Veuillez vous logger pour accéder à cette page</h2>
+  <main class="col-md-9 float-left col px-5 pl-md-5 pt-5>
+    <div class="registration">
+      {% if form.errors %}
+        <p>Il y a une erreur dans votre identifiant ou votre mot de passe</p>
       {% endif %}
-    {% endif %}
 
-    {% if user.is_authenticated %}
-          <p>Vous êtes déjà connecté</p>
-    {% else %}
+      {% if next %}
+        {% if user.is_authenticated %}
+          <p>Avec cet utilisateur vous n'avez pas accès à cette page. Veuillez vous connecter avec un autre compte utilisateur.</p>
+        {% else %}
+          <h2>Veuillez vous logger pour accéder à cette page</h2>
+        {% endif %}
+      {% endif %}
 
-    <form method="post" action="{% url 'login' %}">
-      {% csrf_token %}
-      <table class="table">
-        <tr>
-          <td>Nom d'utilisateur : </td>
-          <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-          <td>Mot de passe : </td>
-          <td>{{ form.password }}</td>
-        </tr>
-      </table>
-      <button class="btn btn-dark" type="submit" >Se connecter</button>
-      <input type="hidden" name="next" value="{{ next }}" />
-    </form>
+      {% if user.is_authenticated %}
+            <p>Vous êtes déjà connecté</p>
+      {% else %}
 
-    {# Assumes you setup the password_reset view in your URLconf #}
-    <p><a href="{% url 'password_reset' %}">Vous avez perdu votre mot de passe ?</a></p>
-    {% endif %}
-  </div>
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <table class="table">
+          <tr>
+            <td>Nom d'utilisateur : </td>
+            <td>{{ form.username }}</td>
+          </tr>
+          <tr>
+            <td>Mot de passe : </td>
+            <td>{{ form.password }}</td>
+          </tr>
+        </table>
+        <button class="btn btn-dark" type="submit" >Se connecter</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+
+      {# Assumes you setup the password_reset view in your URLconf #}
+      <p><a href="{% url 'password_reset' %}">Vous avez perdu votre mot de passe ?</a></p>
+      {% endif %}
+    </div>
+  </main>
 {% endblock %}
