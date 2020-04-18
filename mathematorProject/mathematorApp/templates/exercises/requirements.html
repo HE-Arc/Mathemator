@@ -2,14 +2,23 @@
 
 {% block content %}
 
-{% include 'exercises/exercises.html' %}
-<a href="#" data-target="#sidebar" data-toggle="collapse" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Exercises</a>
+  {% include 'exercises/exercises.html' %}
+  <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
+    <a href="#" data-target="#sidebar" data-toggle="collapse" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Exercises</a>
 
-<h1>Pré-requis</h1>
-<p>Vous n'avez pas fait tous les exercices requis pour l'exercice : {{ exercise.name }}</p>
-<p>Il faut faire les exercices suivant :</p>
-{% for ex in exerciseRequirement %}
-  <a href="{% url 'operations' ex.id %}">{{ ex.name }}</a>
-{% endfor %}
+      <h1 class="text-center display-3">Pré-requis</h1>
+      <br>
+      <div>
+        <h5><strong>Vous n'avez pas fait tous les exercices requis pour l'exercice</strong></h5>
+        <em> {{ exercise.name }} </em>
+      </div>
+      <br>
+      <div>
+      <h5><strong>Vous devez d'abord faire les exercices suivants</strong></h5>
+      {% for ex in exerciseRequirement %}
+        <a href="{% url 'operations' ex.id %}">{{ ex.name }}</a>
+      {% endfor %}
+    </div>
+  </main>
 
 {% endblock %}
