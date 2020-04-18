@@ -52,16 +52,7 @@ set :deploy_to, "/var/www/#{fetch(:application)}"
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-<<<<<<< HEAD
-# server "example.com",
-#   user: "user_name",
-#   roles: %w{web app},
-=======
- server "mathemator.srvz-webapp.he-arc.ch",
-   user: "poweruser",
-   roles: %w{app db web},
-   port:1432
->>>>>>> master
+
 #   ssh_options: {
 #     user: "user_name", # overrides user setting above
 #     keys: %w(/home/user_name/.ssh/id_rsa),
@@ -69,8 +60,3 @@ set :deploy_to, "/var/www/#{fetch(:application)}"
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
-<<<<<<< HEAD
-=======
-
-set :deploy_to, "/var/www/#{fetch(:application)}"
->>>>>>> master
