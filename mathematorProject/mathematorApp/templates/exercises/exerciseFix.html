@@ -1,32 +1,52 @@
+
+
 {% extends "base.html" %}
 
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
 {% block content %}
+<nav id="wrapper">
+  {% include 'exercises/exercises.html' %}
+</nav>
 
-{% include 'exercises/exercises.html' %}
-<a href="#" data-target="#sidebar" data-toggle="collapse" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Exercises</a>
+<div id="content">
+  <div class="col px-md-5">
+    <a href="#" data-target="#sidebar" data-toggle="collapse" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Exercises</a>
 
-<h1>{{exercise.name}}</h1>
-<p>Année : {{exercise.year}}</p>
-<p>Question : {{exercise.question}}</p>
-<p>Résultat : {{exercise.result}}</p>
+    <br>
+    <br>
+    {% if messages %}
+    <div>
+      {% for message in messages %}
+        {{ message }} <br>
+      {% endfor %}
+    {% endif %}
+    </div>
+    <br>
+    <br>
 
-<br>
-<br>
-{% if messages %}
-  {% for message in messages %}
-    {{ message }} <br>
-  {% endfor %}
-{% endif %}
-<br>
-<br>
+    <h1>{{exercise.name}}</h1>
+    <p>
+    <label>Année : {{exercise.year}}</label>
+    </p>
+    <p>
+    <label>Question : {{exercise.question}}</label>
+    </p>
 
-Ton résultat :
-<form method="post" action="/checkResult/">
-  {% csrf_token %}
-  <input type="NumberInput" id="resultInput" name="resultInput" value="">
-  <input type="hidden" name="next" value="{{ request.path }}">
-  <input type='hidden'  id="exercise_id" name="exercise_id" value={{exercise.id}} />
-  <input type='hidden'  id="result" name="result" value={{result}} />
-  <input type="submit" value="Valider">
-</form>
+    Ton résultat :
+    <form method="post" action="/checkResult/">
+      {% csrf_token %}
+      <div class="form-group">
+        <input class="form-control" type="NumberInput" id="resultInput" name="resultInput" value="">
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <input type='hidden'  id="exercise_id" name="exercise_id" value={{exercise.id}} />
+        <input type='hidden'  id="result" name="result" value={{result}} />
+      </div>
+        <input  class=" btn btn-primary btn-lg" type="submit" value="Valider">
+
+    </form>
+  </div>
+</div>
 {% endblock %}
