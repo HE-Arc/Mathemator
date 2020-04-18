@@ -1,8 +1,10 @@
 {% extends "registration/base_registration.html" %}
 
 {% block content %}
+<main class="col-md-9 float-left col px-5 pl-md-5 pt-5">
   <div class="registration">
     <h2 class="display-4 font-weight-light">Vous n'êtes plus connecté!</h2>
     <a href="{% url 'login' %}">Cliquez ici pour vous connecter de nouveau</a>
   </div>
+</main>
 {% endblock %}
