@@ -39,70 +39,70 @@
     "model": "mathematorApp.Exercise",
     "pk": 1,
     "fields": {
-      "name":"exercice 1",
+      "name":"Exercice 1",
       "objective":"Réussir à résoudre une addition simple pour des nombres entre 0 et 10",
-      "theme":"opérations basiques",
-      "branches":"Mathematique 1e",
+      "theme":"Opérations basiques",
+      "branches":"Mathematique",
       "year":"1H",
-      "question":"Résous le calcul suivant"
+      "question":"Résous le calcul suivant :"
     }
   },
   {
     "model": "mathematorApp.Exercise",
     "pk": 2,
     "fields": {
-      "name":"exercice 2",
+      "name":"Exercice 2",
       "objective":"Réussir à résoudre une addition simple pour des nombres entre 0 et 100",
-      "theme":"opérations basiques",
-      "branches":"Mathematique 2e",
+      "theme":"Opérations basiques",
+      "branches":"Mathematique",
       "year":"2H",
-      "question":"Résous le calcul suivant"
+      "question":"Résous le calcul suivant :"
     }
   },
   {
     "model": "mathematorApp.Exercise",
     "pk": 3,
     "fields": {
-      "name":"exercice 3",
+      "name":"Exercice 3",
       "objective":"Réussir à résoudre une soustraction simple pour des nombres entre 0 et 100",
-      "theme":"opérations basiques",
-      "branches":"Mathematique 2e",
+      "theme":"Opérations basiques",
+      "branches":"Mathematique",
       "year":"2H",
-      "question":"Résous le calcul suivant"
+      "question":"Résous le calcul suivant : "
     }
   },
   {
     "model": "mathematorApp.Exercise",
     "pk": 4,
     "fields": {
-      "name":"exercice 4",
+      "name":"Exercice 4",
       "objective":"Réussir à résoudre une opération (+, -, * ou /) pour des nombres entre 0 et 50",
-      "theme":"opérations basiques",
-      "branches":"Mathematique 2e",
+      "theme":"Opérations basiques",
+      "branches":"Mathematique",
       "year":"4H",
-      "question":"Résous le calcul suivant"
+      "question":"Résous le calcul suivant :"
     }
   },
   {
     "model": "mathematorApp.Exercise",
     "pk": 5,
     "fields": {
-      "name" : "exercice 5",
+      "name" : "Exercice 5",
       "objective" : "Réussir à résoudre une opération (+, -, * ou /) pour des nombres entre 0 et 50",
       "theme":"opérations multiples",
-      "branches":"Mathematique 2e",
+      "branches":"Mathematique",
       "year":"4H",
-      "question":"Résous le calcul suivant"
+      "question":"Résous le calcul suivant :"
     }
   },
   {
     "model": "mathematorApp.Exercise",
     "pk": 6,
     "fields": {
-      "name":"exercice 6",
+      "name":"Exercice 6",
       "objective":"Accomplissez le calcul",
       "theme":"opérations fix",
-      "branches":"Mathematique 2e",
+      "branches":"Mathematique",
       "year":"4H",
       "question": "Combien de fois apparait le chiffre 9 dans les nombre de 1 à 100"
     }
@@ -111,10 +111,10 @@
     "model": "mathematorApp.Exercise",
     "pk": 7,
     "fields": {
-      "name":"exercice 7",
+      "name":"Exercice 7",
       "objective":"Accomplissez le calcul",
       "theme":"opérations fix",
-      "branches":"Mathematique 2e",
+      "branches":"Mathematique",
       "year":"4H",
       "question":"La combinaison d'un coffre est une suite croissante de trois chiffres non nuls. Si la somme des chiffres est 17 et que le produit de deux chiffres augmenté du troisième est un carré parfait, quel est la combinaison du coffre ?"
     }
@@ -157,6 +157,22 @@
     "fields": {
     "idExercise":6,
     "idExerciseRequirement":1
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseRequirement",
+    "pk": 6,
+    "fields": {
+    "idExercise":6,
+    "idExerciseRequirement":5
+    }
+  },
+  {
+    "model": "mathematorApp.ExerciseRequirement",
+    "pk": 7,
+    "fields": {
+    "idExercise":7,
+    "idExerciseRequirement":6
     }
   },
   {
@@ -253,7 +269,7 @@
   },
   {
     "model": "mathematorApp.ExerciseFix",
-    "pk": 6,
+    "pk": 7,
     "fields": {
       "result" : 179
     }
