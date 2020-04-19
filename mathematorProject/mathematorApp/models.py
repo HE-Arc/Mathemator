@@ -39,7 +39,7 @@ Generic table for all the type of exercises (ExerciseOperation and ExerciseFix)
 '''
 class Exercise(models.Model):
     name = models.CharField(max_length=50)
-    objective = models.CharField(max_length=50)
+    objective = models.CharField(max_length=200)
     theme = models.CharField(max_length=50)
     branches = models.CharField(max_length=50)
     year = models.CharField(max_length=50)
