@@ -16,11 +16,12 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-STATIC_ROOT = os.path.join('/var/www/Mathemator/current/mathematorApp/static')
+#STATIC_ROOT = os.path.join('/var/www/Mathemator/current/mathematorApp/static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join('/var/www/Mathemator/current/mathematorApp/static'),
+    os.path.join(BASE_DIR,"static"),
 )
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
