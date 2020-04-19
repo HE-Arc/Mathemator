@@ -25,7 +25,7 @@ SECRET_KEY = 'f$r#(4n)e)uf4(fdbvioa6qv225^i36&iw867!!#h_4+s-p6by'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["mathemator.srvz-webapp.he-arc.ch","localhost"]
+ALLOWED_HOSTS = ["mathemator.srvz-webapp.he-arc.ch"]
 
 # Application definition
 
