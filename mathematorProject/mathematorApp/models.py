@@ -45,7 +45,7 @@ class Exercise(models.Model):
     year = models.CharField(max_length=50)
     relationExerciseRequirement = models.ManyToManyField('self', through='ExerciseRequirement', symmetrical=False, related_name='related_to_exerciserequirement')
     relationExerciseDone =  models.ManyToManyField('Student', through='ExerciseDone', symmetrical=False, related_name='related_to_exercisedone')
-    question = models.CharField(max_length=50, default ="")
+    question = models.CharField(max_length=500, default ="")
 
 '''
 Exercise Requirement Table
