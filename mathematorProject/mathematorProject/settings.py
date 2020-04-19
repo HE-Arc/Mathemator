@@ -144,3 +144,6 @@ LOGIN_REDIRECT_URL = '/'
 
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)
+
+STATIC_ROOT = os.environ.get('DJANGO_STATIC_ROOT')
+MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT')
