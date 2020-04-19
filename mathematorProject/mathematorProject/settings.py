@@ -19,8 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)
 
-STATIC_ROOT = os.environ.get('DJANGO_STATIC_ROOT')
-MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT')
+STATIC_ROOT = os.environ.get('var/www/Mathemator/current/static/')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
