@@ -1,9 +1,3 @@
-.wrapper {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
-}
-
 #sidebar {
   overflow: hidden;
   z-index: 3;
@@ -157,8 +151,4 @@
 #profile-menu{
     position: absolute;
     left: -85%;
-}
-
-#exercise-button{
-  /* I don't know */
 }
