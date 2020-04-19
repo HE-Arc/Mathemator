@@ -27,9 +27,9 @@
             <tr>
               {% for ex in exerciseOperation %}
                   {% if ex.id in exDone %}
-                    <td scope="row" class="done bg-info text-center">Réussi</td>
+                    <td scope="row" class="done text-center">Réussi</td>
                   {% else %}
-                    <td scope="row" class="fail bg-danger text-center">Pas encore réussi</td>
+                    <td scope="row" class="fail text-center">Pas encore réussi</td>
                   {% endif %}
               {% endfor %}
             </tr>
