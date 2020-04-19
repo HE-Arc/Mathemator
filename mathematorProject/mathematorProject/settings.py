@@ -16,6 +16,12 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
+
+STATIC_ROOT = os.environ.get('DJANGO_STATIC_ROOT')
+MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -140,10 +146,3 @@ STATIC_URL = '/static/'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
-
-
-import mimetypes
-mimetypes.add_type("text/css", ".css", True)
-
-STATIC_ROOT = os.environ.get('DJANGO_STATIC_ROOT')
-MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT')
