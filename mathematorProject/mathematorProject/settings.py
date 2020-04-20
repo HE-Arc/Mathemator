@@ -17,10 +17,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 #STATIC_ROOT = os.path.join(BASE_DIR,"static")
-STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,"static"),
+    os.path.normpath(os.path.join(BASE_DIR, "static")),
 )
+
+MEDIA_URL =  'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)
 
 
 # Quick-start development settings - unsuitable for production
