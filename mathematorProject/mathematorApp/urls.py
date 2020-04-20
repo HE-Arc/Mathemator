@@ -16,4 +16,4 @@ urlpatterns = [
     path('operation/<int:exercise_id>/', views.exerciseOperation, name='operations'),
     path('fix/<int:exercise_id>/', views.exerciseFix, name='fix'),
     path('checkResult/', views.checkResult, name='checkResult'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
