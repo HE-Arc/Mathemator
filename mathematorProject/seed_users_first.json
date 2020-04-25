@@ -71,60 +71,7 @@
         "user_permissions": []
     }
 },
-{
-    "model": "auth.user",
-    "pk": 5,
-    "fields": {
-        "password": "pbkdf2_sha256$180000$25ce2edb49688a643dba5af153070af91391aecf6590e00037d377b00692eae0",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "prof",
-        "first_name": "prof",
-        "last_name": "prof",
-        "email": "prof@prof.prof",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2020-03-12T17:50:35.880Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "auth.user",
-    "pk": 6,
-    "fields": {
-        "password": "pbkdf2_sha256$180000$25ce2edb49688a643dba5af153070af91391aecf6590e00037d377b00692eae0",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "prof2",
-        "first_name": "prof2",
-        "last_name": "prof2",
-        "email": "prof2@prof2.prof2",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2020-03-15T17:50:35.880Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "auth.user",
-    "pk": 7,
-    "fields": {
-        "password": "pbkdf2_sha256$180000$25ce2edb49688a643dba5af153070af91391aecf6590e00037d377b00692eae0",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "prof3",
-        "first_name": "prof3",
-        "last_name": "prof3",
-        "email": "prof3@prof3.prof3",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2020-03-15T17:50:35.880Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
+
 {
     "model": "sessions.session",
     "pk": "52lszfewuu90vrtpsdaqtl5s8uops0xc",

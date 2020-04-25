@@ -31,34 +31,7 @@
     "pk": 4,
     "fields": {
       "user":4,
-      "group":"prof",
-      "isTeacher":true
-    }
-  },
-  {
-    "model": "mathematorApp.Student",
-    "pk": 5,
-    "fields" : {
-      "user" : 5,
-      "group" : "prof",
-      "isTeacher":true
-    }
-  },
-  {
-    "model": "mathematorApp.Student",
-    "pk" : 6,
-    "fields" : {
-      "user" : 6,
-      "group" : "prof",
-      "isTeacher":true
-    }
-  },
-  {
-    "model": "mathematorApp.Student",
-    "pk": 7,
-    "fields" : {
-      "user" : 7,
-      "group" : "prof",
+      "group":"groupedeqwe",
       "isTeacher":true
     }
   },

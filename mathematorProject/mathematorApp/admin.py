@@ -1,6 +1,6 @@
 '''
 Mathemator
-Roxane Carraux - Edwin Claude - Loïc Jurasz
+Roxane Carraux - Edwin Claude - Loic Jurasz
 Avril 2020
 He-Arc
 '''
