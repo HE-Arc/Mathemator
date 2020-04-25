@@ -4,6 +4,8 @@ Roxane Carraux - Edwin Claude - Loïc Jurasz
 Avril 2020
 He-Arc
 '''
+"""
+# removed for production
 
 from django.contrib import admin
 
@@ -20,3 +22,4 @@ admin.site.register(ExerciseRequirement)
 admin.site.register(ExerciseDone)
 admin.site.register(ExerciseOperation)
 admin.site.register(ExerciseFix)
+"""

@@ -1,2 +1,2 @@
 # Mathemator
-Generator of mathematics exercices and student management
+Generator of mathematics exercises and student management
