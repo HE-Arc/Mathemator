@@ -1,6 +1,6 @@
 asgiref==3.2.3
 beautifulsoup4==4.8.2
-Django==3.0.2
+Django==3.0.14
 django-bootstrap4==1.1.1
 djangorestframework==3.11.0
 pytz==2019.3
